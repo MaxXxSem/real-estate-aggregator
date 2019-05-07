@@ -1,0 +1,35 @@
+{
+    "data": {
+        "houses": [
+            {
+                "id": "",
+                "city": "",
+                "info": {
+                    "price": "",
+                    "address": "",
+                    "roomsCount": "",
+                    "houseArea": "",
+                    "plotArea": "",
+                    "numberOfFloors": "",
+                    "buildingType": "",
+                    "title": "",
+                    "creationDate": "",
+                    "description": "",
+                    "offerFrom": "",
+                    "icon": "",
+                    "mainPhoto": "",
+                    "photos": [
+                        "",
+                        "",
+                        ""
+                    ]
+                },
+                "contacts": {
+                    "name": "",
+                    "phone": "",
+                    "status": ""
+                }
+            }
+        ]
+    }
+}

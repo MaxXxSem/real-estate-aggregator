@@ -1,0 +1,32 @@
+{
+    "data": {
+        "plots": [
+            {
+                "id": "",
+                "city": "",
+                "info": {
+                    "price": "",
+                    "address": "",
+                    "plotArea": "",
+                    "type": "",
+                    "title": "",
+                    "creationDate": "",
+                    "description": "",
+                    "offerFrom": "",
+                    "icon": "",
+                    "mainPhoto": "",
+                    "photos": [
+                        "",
+                        "",
+                        ""
+                    ]
+                },
+                "contacts": {
+                    "name": "",
+                    "phone": "",
+                    "status": ""
+                }
+            }
+        ]
+    }
+}
