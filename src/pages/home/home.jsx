@@ -1,7 +1,7 @@
 import React from 'react';
-import './Home.scss'
+import './Home.scss';
 
-class Home extends React.Component {
+class Home extends React.Component {    
     render() {
         return (
             <div>
