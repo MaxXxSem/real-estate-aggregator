@@ -1,0 +1,102 @@
+[
+    {
+        "text": "симферополь",
+        "value": "simferopol"
+    },
+    {
+        "text": "Винница",
+        "value": "vinnitsa"
+    },
+    {
+        "text": "Луцк",
+        "value": "lutsk"
+    },
+    {
+        "text": "Днепр",
+        "value": "dnepr"
+    },
+    {
+        "text": "Донецк",
+        "value": "donetsk"
+    },
+    {
+        "text": "Житомир",
+        "value": "zhitomir"
+    },
+    {
+        "text": "Ужгород",
+        "value": "uzhgorod"
+    },
+    {
+        "text": "Запорожье",
+        "value": "zaporozhe"
+    },
+    {
+        "text": "Ивано-Франковск",
+        "value": "ivano-frankovsk"
+    },
+    {
+        "text": "Киев",
+        "value": "kiev"
+    },
+    {
+        "text": "Кропивницкий",
+        "value": "kropivnitskiy"
+    },
+    {
+        "text": "Луганск",
+        "value": "lugansk"
+    },
+    {
+        "text": "Львов",
+        "value": "lvov"
+    },
+    {
+        "text": "Николаев",
+        "value": "nikolaev"
+    },
+    {
+        "text": "Одесса",
+        "value": "odessa"
+    },
+    {
+        "text": "Полтава",
+        "value": "poltava"
+    },
+    {
+        "text": "Ровно",
+        "value": "rovno"
+    },
+    {
+        "text": "Сумы",
+        "value": "sumy"
+    },
+    {
+        "text": "Тернополь",
+        "value": "ternopol"
+    },
+    {
+        "text": "Харьков",
+        "value": "kharkov"
+    },
+    {
+        "text": "Херсон",
+        "value": "kherson"
+    },
+    {
+        "text": "Хмельницкий",
+        "value": "khmelnitskiy"
+    },
+    {
+        "text": "Черкассы",
+        "value": "cherkassy"
+    },
+    {
+        "text": "Чернигов",
+        "value": "chernigov"
+    },
+    {
+        "text": "Черновцы",
+        "value": "chernovtsy"
+    }
+]
