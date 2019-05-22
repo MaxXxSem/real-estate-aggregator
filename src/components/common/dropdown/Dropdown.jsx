@@ -6,10 +6,10 @@ class Dropdown extends React.Component {
         const { options, classes } = this.props;
 
         return (
-            <select className={classes}>
+            <select onChange={this.props.onChangeHandler} className={classes}>
                 {
                     options.map(x => (
-                        <option key={x.value} value={x.value}>{x.text}</option>
+                        <option key={x.value} value={x.value}>{x.text[0].toUpperCase() + x.text.slice(1)}</option>
                     ))
                 }
             </select>

@@ -20,6 +20,7 @@ class Home extends React.Component {
                 <MainFiltersContainer 
                     siteName="Real Estate Aggregator"
                     description="Лучший сервис по продаже недвижимости"
+                    buttonName="Найти"
                     objectTypeOptions={this.objectTypeOptions}
                     cityOptions={this.cityOptions}
                 />
