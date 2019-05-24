@@ -1,18 +1,9 @@
 import React from 'react';
 import './Home.scss';
 import MainFiltersContainer from '../../components/pages/home/mainFiltersContainer/MainFiltersContainer';
-import CommonDataManager from '../../data/dataManagers/commonDataManager';
 
 // chose city and type of objects
-class Home extends React.Component { 
-    constructor(props) {
-        super(props);
-
-        let dataManager = new CommonDataManager();
-        this.objectTypeOptions = dataManager.getObjectTypes();
-        this.cityOptions = dataManager.getCities();
-    }
-    
+class Home extends React.Component {     
     // TODO: add props types and defaults    
     render() {
         return (

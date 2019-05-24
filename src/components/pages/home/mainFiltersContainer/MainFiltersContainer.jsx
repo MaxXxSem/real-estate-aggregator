@@ -1,13 +1,18 @@
 import React from 'react';
-import Dropdown from '../../../common/dropdown/Dropdown';
+import MainFilters from '../../../common/mainFilters/MainFilters';
+import CommonDataManager from '../../../../data/dataManagers/commonDataManager';
 
 class MainFiltersContainer extends React.Component { 
     constructor(props) {
         super(props);
+
+        let dataManager = new CommonDataManager();
+        this.objectTypeOptions = dataManager.getObjectTypes();
+        this.cityOptions = dataManager.getCities();
         
         this.state = {
-            city: this.props.cityOptions[0].value, 
-            type: this.props.objectTypeOptions[0].value 
+            city: this.cityOptions[0].value, 
+            type: this.objectTypeOptions[0].value 
         };
 
         this.onCityChange = this.onCityChange.bind(this);
@@ -35,7 +40,6 @@ class MainFiltersContainer extends React.Component {
     
     render() {
         const { siteName, description, buttonName } = this.props;
-        const { objectTypeOptions, cityOptions } = this.props;
 
         return (
             <div className="container">
@@ -43,20 +47,12 @@ class MainFiltersContainer extends React.Component {
                 <div className="site-description">{description}</div>
 
                 <div>
-                    <div className="form-group">
-                        <Dropdown 
-                            classes="form-control" 
-                            options={objectTypeOptions} 
-                            onChangeHandler={this.onTypeChange} 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <Dropdown 
-                            classes="form-control" 
-                            options={cityOptions}
-                            onChangeHandler={this.onCityChange}
-                        />
-                    </div>
+                    <MainFilters 
+                        onTypeChange={this.onTypeChange}
+                        onCityChange={this.onCityChange}
+                        objectTypeOptions={this.objectTypeOptions}
+                        cityOptions={this.cityOptions}
+                    />
                     <a href="#" className="find-button btn btn-primary" onClick={this.searchBtnClick}>{buttonName}</a>
                 </div>
             </div>

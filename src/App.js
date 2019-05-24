@@ -4,6 +4,9 @@ import NotFound from './pages/NotFound';
 import { routes } from './config/routes';
 import { ToastContainer } from 'react-toastify';
 import './App.scss';
+import '../node_modules/jquery/dist/jquery';
+import '../node_modules/popper.js/dist/popper';
+import '../node_modules/bootstrap/dist/js/bootstrap';
 
 class App extends Component {
     render() {
