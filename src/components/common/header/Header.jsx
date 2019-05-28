@@ -6,9 +6,8 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
 
-        let dataManager = new CommonDataManager();
-        this.objectTypeOptions = dataManager.getObjectTypes();
-        this.cityOptions = dataManager.getCities();
+        this.objectTypeOptions = CommonDataManager.getObjectTypes();
+        this.cityOptions = CommonDataManager.getCities();
 
         this.onCityChange = this.onCityChange.bind(this);
         this.onTypeChange = this.onTypeChange.bind(this);

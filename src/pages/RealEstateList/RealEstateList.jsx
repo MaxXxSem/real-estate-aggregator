@@ -22,7 +22,7 @@ class RealEstateList extends React.Component {
                 />
 
                 {/* filters */}
-                <FiltersContainer />
+                <FiltersContainer type={this.type} />
 
                 {/* list of items */}
             </div>

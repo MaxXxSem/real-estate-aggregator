@@ -19,5 +19,5 @@ export default class ApartmentsFilter {
 
     buildingType = null;
      
-    workWithRieltors = null;
+    noWorkWithRieltors = null;
 }
