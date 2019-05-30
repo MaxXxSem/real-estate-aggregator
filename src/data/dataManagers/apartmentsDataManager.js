@@ -21,7 +21,7 @@ class ApartmentsDataManager {
                     && (filter.floorFrom ? (x.Info.Floor == null || x.Info.Floor >= filter.floorFrom) : true)
                     && (filter.floorTo ? (x.Info.Floor == null || x.Info.Floor <= filter.floorTo) : true)
                     && (filter.buildingType ? (x.Info.BuildingType == null || x.Info.BuildingType === filter.buildingType) : true)
-                    && (filter.noWorkWithRieltors ? (x.Info.OfferFrom == null || x.Info.OfferFrom !== "посредник") : true)
+                    && (filter.noWorkWithRieltors && filter.noWorkWithRieltors == true ? (x.Info.OfferFrom == null || x.Info.OfferFrom !== "посредник") : true)
                 )
             );
         }

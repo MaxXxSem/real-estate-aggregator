@@ -1,7 +1,7 @@
 import React from 'react';
 import './RealEstateList.scss';
 import Header from '../../components/common/header/Header';
-import FiltersContainer from '../../components/pages/realEstateList/filters/FiltersContainer';
+import ApartmentsFiltersContainer from '../../components/pages/realEstateList/filters/ApartmentsFiltersContainer';
 
 // filters and list of items
 class RealEstateList extends React.Component {
@@ -22,7 +22,7 @@ class RealEstateList extends React.Component {
                 />
 
                 {/* filters */}
-                <FiltersContainer type={this.type} />
+                <ApartmentsFiltersContainer city={this.city} />
 
                 {/* list of items */}
             </div>

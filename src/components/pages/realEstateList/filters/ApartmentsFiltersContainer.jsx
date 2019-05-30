@@ -4,8 +4,10 @@ import Dropdown from '../../../common/dropdown/Dropdown';
 import CommonDataManager from '../../../../data/dataManagers/commonDataManager';
 import Label from '../../../common/label/Label';
 import Checkbox from '../../../common/checkbox/Checkbox';
+import ApartmentsFilter from '../../../../data/dataManagers/filters/apartmentsFilter';
+import ApartmentsDataManager from '../../../../data/dataManagers/apartmentsDataManager';
 
-class FiltersContainer extends React.Component { 
+class ApartmentsFiltersContainer extends React.Component { 
     constructor(props) {
         super(props);
 
@@ -21,13 +23,39 @@ class FiltersContainer extends React.Component {
         this.livingAreaTo = React.createRef();
         this.numberOfFloorsFrom = React.createRef();
         this.numberOfFloorsTo = React.createRef();
+        this.buildingType = React.createRef();
+        this.noWorkWithRieltors = React.createRef();
 
         this.apartmentTypes = CommonDataManager.getApartmentTypes();
         this.houseTypes = CommonDataManager.getHouseTypes();
         this.plotTypes = CommonDataManager.getPlotTypes();
+
+        this.btnSearchClickHandler = this.btnSearchClickHandler.bind(this);
     }
     
-    // TODO: check type
+    btnSearchClickHandler(e) {
+        let apartmentFilter = new ApartmentsFilter();
+        apartmentFilter.priceFrom = this.priceFrom.current.value;
+        apartmentFilter.priceTo = this.priceTo.current.value;
+        apartmentFilter.roomsCountFrom = this.roomsCountFrom.current.value;
+        apartmentFilter.roomsCountTo = this.roomsCountTo.current.value;
+        apartmentFilter.fullAreaFrom = this.fullAreaFrom.current.value;
+        apartmentFilter.fullAreaTo = this.fullAreaTo.current.value;
+        apartmentFilter.livingAreaFrom = this.livingAreaFrom.current.value;
+        apartmentFilter.livingAreaTo = this.livingAreaTo.current.value;
+        apartmentFilter.numberOfFloorsFrom = this.numberOfFloorsFrom.current.value;
+        apartmentFilter.numberOfFloorsTo = this.numberOfFloorsTo.current.value;
+        apartmentFilter.floorFrom = this.floorFrom.current.value;
+        apartmentFilter.floorTo = this.floorTo.current.value;
+        apartmentFilter.buildingType = this.buildingType.current.value;
+        apartmentFilter.noWorkWithRieltors = this.noWorkWithRieltors.current.checked;
+
+        console.log(this.noWorkWithRieltors.current.checked);
+
+        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, apartmentFilter, 10, 0);
+        console.log(apartmentsList);
+    }
+
     render() {
         return (
             <div className="filters">
@@ -41,16 +69,18 @@ class FiltersContainer extends React.Component {
                     <Label text="Тип" />
                     <Dropdown 
                         classes="form-control" 
-                        options={this.apartmentTypes} 
+                        options={this.apartmentTypes}
+                        ref={this.buildingType} 
                     />
                 </div>
                 <div>
                     <Label text="Не работаю с посредниками" />
-                    <Checkbox />
+                    <Checkbox ref={this.noWorkWithRieltors} />
                 </div>
+                <button className="btn btn-primary" onClick={this.btnSearchClickHandler}>Найти</button>
             </div>
         );
     }
 }
 
-export default FiltersContainer;
+export default ApartmentsFiltersContainer;
