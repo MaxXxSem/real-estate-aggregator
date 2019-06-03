@@ -50,10 +50,8 @@ class ApartmentsFiltersContainer extends React.Component {
         apartmentFilter.buildingType = this.buildingType.current.value;
         apartmentFilter.noWorkWithRieltors = this.noWorkWithRieltors.current.checked;
 
-        console.log(this.noWorkWithRieltors.current.checked);
-
         let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, apartmentFilter, 10, 0);
-        console.log(apartmentsList);
+        this.props.onFiltersChange(apartmentsList);
     }
 
     render() {
