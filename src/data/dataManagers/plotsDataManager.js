@@ -12,7 +12,7 @@ class PlotsDataManager {
                     && (filter.priceTo ? x.Info.Price <= filter.priceTo : true)
                     && (filter.plotAreaFrom ? (x.Info.PlotArea == null || x.Info.PlotArea >= filter.plotAreaFrom) : true)
                     && (filter.plotAreaTo ? (x.Info.PlotArea == null || x.Info.PlotArea <= filter.plotAreaTo) : true)
-                    && (filter.plotType ? (x.Info.plotType == null || x.Info.plotType === filter.plotType) : true)
+                    && (filter.plotType ? (x.Info.PlotType == null || x.Info.PlotType === filter.plotType) : true)
                     && (filter.noWorkWithRieltors && filter.noWorkWithRieltors == true ? (x.Info.OfferFrom == null || x.Info.OfferFrom !== "посредник") : true)
                 )
             );

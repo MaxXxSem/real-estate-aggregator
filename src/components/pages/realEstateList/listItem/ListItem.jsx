@@ -17,7 +17,7 @@ class ListItem extends React.Component {
                 </div>           
 
                 <div className="list-item-address">
-                    <h3>{this.props.address || "-"}</h3>
+                    <a>{this.props.address || "-"}</a>
                 </div>     
 
                 <div className="list-item-price">

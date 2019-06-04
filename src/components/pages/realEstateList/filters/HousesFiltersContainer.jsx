@@ -24,13 +24,16 @@ class HousesFiltersContainer extends React.Component {
         this.buildingType = React.createRef();
         this.noWorkWithRieltors = React.createRef();
 
-        this.apartmentTypes = CommonDataManager.getApartmentTypes();
         this.houseTypes = CommonDataManager.getHouseTypes();
-        this.plotTypes = CommonDataManager.getPlotTypes();
 
         this.btnSearchClickHandler = this.btnSearchClickHandler.bind(this);
     }
     
+    componentDidMount() {
+        let housesList = HousesDataManager.getHouses(this.props.city, new HousesFilter(), this.props.limit, this.props.offset);
+        this.props.onFiltersChange(housesList);
+    }
+
     btnSearchClickHandler(e) {
         let housesFilter = new HousesFilter();
         housesFilter.priceFrom = this.priceFrom.current.value;
@@ -46,7 +49,7 @@ class HousesFiltersContainer extends React.Component {
         housesFilter.buildingType = this.buildingType.current.value;
         housesFilter.noWorkWithRieltors = this.noWorkWithRieltors.current.checked;
 
-        let housesList = HousesDataManager.getHouses(this.props.city, housesFilter, 10, 0);
+        let housesList = HousesDataManager.getHouses(this.props.city, housesFilter, this.props.limit, this.props.offset);
         this.props.onFiltersChange(housesList);
     }
 
@@ -62,7 +65,7 @@ class HousesFiltersContainer extends React.Component {
                     <Label text="Тип" />
                     <Dropdown 
                         classes="form-control" 
-                        options={this.apartmentTypes}
+                        options={this.houseTypes}
                         ref={this.buildingType} 
                     />
                 </div>

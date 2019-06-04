@@ -6,6 +6,7 @@ import HousesFiltersContainer from '../../components/pages/realEstateList/filter
 import PlotsFiltersContainer from '../../components/pages/realEstateList/filters/PlotsFiltersContainer';
 import ObjectType from '../../util/ObjectType';
 import ItemsList from '../../components/pages/realEstateList/list/ItemsList';
+import Pagination from '../../components/common/pagination/Pagination';
 
 // filters and list of items
 class RealEstateList extends React.Component {
@@ -15,14 +16,30 @@ class RealEstateList extends React.Component {
         this.type = this.props.match.params.type;
         this.city = this.props.match.params.city;
 
-        this.state = { items: null };
+        this.state = { 
+            items: null,
+            limit: 2,
+            offset: 0
+        };
 
         this.onFiltersChange = this.onFiltersChange.bind(this);
+        this.onPageChange = this.onPageChange.bind(this);
     }
 
     onFiltersChange(newItems) {
         this.setState({
             items: newItems
+        });
+    }
+
+    onPageChange(e) {
+        e.preventDefault();
+
+        let value = parseInt(e.target.getAttribute("value"));
+        let limit = this.state.limit;
+
+        this.setState({
+            offset: (value - 1) * limit
         });
     }
     
@@ -37,9 +54,9 @@ class RealEstateList extends React.Component {
 
                 {/* filters */}
                 {
-                    (this.type === ObjectType.Apartments && <ApartmentsFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} />)
-                    || (this.type === ObjectType.Houses && <HousesFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} />)
-                    || (this.type === ObjectType.Plots && <PlotsFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} />)
+                    (this.type === ObjectType.Apartments && <ApartmentsFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} />)
+                    || (this.type === ObjectType.Houses && <HousesFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} />)
+                    || (this.type === ObjectType.Plots && <PlotsFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} />)
                 }
 
                 {/* list of items */}
@@ -50,6 +67,13 @@ class RealEstateList extends React.Component {
                         type={this.type}
                     />
                 }
+
+                {/* pagination */}
+                <Pagination 
+                    pagesNumber={this.state.items ? (Math.ceil(this.state.items.totalCount / this.state.limit)) : 0}
+                    page={1}
+                    onPageChange={this.onPageChange}
+                />
             </div>
         )
     }

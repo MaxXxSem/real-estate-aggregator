@@ -15,14 +15,17 @@ class PlotsFiltersContainer extends React.Component {
         this.priceTo = React.createRef();
         this.plotAreaFrom = React.createRef();
         this.plotAreaTo = React.createRef();
-        this.buildingType = React.createRef();
+        this.plotType = React.createRef();
         this.noWorkWithRieltors = React.createRef();
 
-        this.apartmentTypes = CommonDataManager.getApartmentTypes();
-        this.houseTypes = CommonDataManager.getHouseTypes();
         this.plotTypes = CommonDataManager.getPlotTypes();
 
         this.btnSearchClickHandler = this.btnSearchClickHandler.bind(this);
+    }
+
+    componentDidMount() {
+        let plotsList = PlotsDataManager.getPlots(this.props.city, new PlotsFilter(), this.props.limit, this.props.offset);
+        this.props.onFiltersChange(plotsList);
     }
     
     btnSearchClickHandler(e) {
@@ -31,10 +34,10 @@ class PlotsFiltersContainer extends React.Component {
         plotsFilter.priceTo = this.priceTo.current.value;
         plotsFilter.plotAreaFrom = this.plotAreaFrom.current.value;
         plotsFilter.plotAreaTo = this.plotAreaTo.current.value;
-        plotsFilter.buildingType = this.buildingType.current.value;
+        plotsFilter.plotType = this.plotType.current.value;
         plotsFilter.noWorkWithRieltors = this.noWorkWithRieltors.current.checked;
 
-        let housesList = PlotsDataManager.getPlots(this.props.city, plotsFilter, 10, 0);
+        let housesList = PlotsDataManager.getPlots(this.props.city, plotsFilter, this.props.limit, this.props.offset);
         this.props.onFiltersChange(housesList);
     }
 
@@ -47,8 +50,8 @@ class PlotsFiltersContainer extends React.Component {
                     <Label text="Тип" />
                     <Dropdown 
                         classes="form-control" 
-                        options={this.apartmentTypes}
-                        ref={this.buildingType} 
+                        options={this.plotTypes}
+                        ref={this.plotType} 
                     />
                 </div>
                 <div>

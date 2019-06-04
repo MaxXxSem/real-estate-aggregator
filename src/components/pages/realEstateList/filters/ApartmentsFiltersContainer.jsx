@@ -27,10 +27,13 @@ class ApartmentsFiltersContainer extends React.Component {
         this.noWorkWithRieltors = React.createRef();
 
         this.apartmentTypes = CommonDataManager.getApartmentTypes();
-        this.houseTypes = CommonDataManager.getHouseTypes();
-        this.plotTypes = CommonDataManager.getPlotTypes();
 
         this.btnSearchClickHandler = this.btnSearchClickHandler.bind(this);
+    }
+
+    componentDidMount() {
+        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, new ApartmentsFilter(), this.props.limit, this.props.offset);
+        this.props.onFiltersChange(apartmentsList);
     }
     
     btnSearchClickHandler(e) {
@@ -50,7 +53,7 @@ class ApartmentsFiltersContainer extends React.Component {
         apartmentFilter.buildingType = this.buildingType.current.value;
         apartmentFilter.noWorkWithRieltors = this.noWorkWithRieltors.current.checked;
 
-        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, apartmentFilter, 10, 0);
+        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, apartmentFilter, this.props.limit, this.props.offset);
         this.props.onFiltersChange(apartmentsList);
     }
 
