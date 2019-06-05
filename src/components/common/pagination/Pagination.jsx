@@ -6,7 +6,7 @@ class Pagination extends React.Component {
             <nav aria-label="...">
                 <ul className="pagination">
                     <li className={`page-item ${this.props.page == 1 ? 'disabled' : ""}`}>
-                        <a className="page-link" href="#" tabIndex="-1">Previous</a>
+                        <a onClick={this.props.onPrevPage} className="page-link" href="#" tabIndex="-1">Previous</a>
                     </li>
                     {
                         (() => {
@@ -22,7 +22,7 @@ class Pagination extends React.Component {
                         })()
                     }
                     <li className={`page-item  ${this.props.page == this.props.pagesNumber ? 'disabled' : ""}`}>
-                        <a className='page-link' href="#">Next</a>
+                        <a onClick={this.props.onNextPage} className='page-link' href="#">Next</a>
                     </li>
                 </ul>
             </nav>

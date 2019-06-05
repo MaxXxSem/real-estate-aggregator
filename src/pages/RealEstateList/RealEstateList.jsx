@@ -22,13 +22,20 @@ class RealEstateList extends React.Component {
             offset: 0
         };
 
+        this.updateItems = false;
+
         this.onFiltersChange = this.onFiltersChange.bind(this);
         this.onPageChange = this.onPageChange.bind(this);
+        this.onNextPage = this.onNextPage.bind(this);
+        this.onPrevPage = this.onPrevPage.bind(this);
     }
 
-    onFiltersChange(newItems) {
+    onFiltersChange(newItems, updatePage = false) {
+        this.updateItems = true;
+        let oldOffset = this.state.offset;
         this.setState({
-            items: newItems
+            items: newItems,
+            offset: updatePage ? 0 : oldOffset
         });
     }
 
@@ -42,8 +49,31 @@ class RealEstateList extends React.Component {
             offset: (value - 1) * limit
         });
     }
+
+    onNextPage(e) {
+        e.preventDefault();
+
+        let oldOffset = this.state.offset;
+        let oldLimit = this.state.limit;
+        this.setState({
+            offset: oldOffset + oldLimit
+        });
+    }
+
+    onPrevPage(e) {
+        e.preventDefault();
+
+        let oldOffset = this.state.offset;
+        let oldLimit = this.state.limit;
+        this.setState({
+            offset: oldOffset - oldLimit
+        });
+    }
     
     render() {
+        const shouldUpdateItems = this.updateItems;
+        this.updateItems = false;
+
         return (
             <div className="container">
                 {/* heared with main filters */}
@@ -65,14 +95,17 @@ class RealEstateList extends React.Component {
                     <ItemsList 
                         items={this.state.items.data}
                         type={this.type}
+                        shouldUpdate={shouldUpdateItems}
                     />
                 }
 
                 {/* pagination */}
                 <Pagination 
                     pagesNumber={this.state.items ? (Math.ceil(this.state.items.totalCount / this.state.limit)) : 0}
-                    page={1}
+                    page={(this.state.offset / this.state.limit) + 1}
                     onPageChange={this.onPageChange}
+                    onNextPage={this.onNextPage}
+                    onPrevPage={this.onPrevPage}
                 />
             </div>
         )

@@ -20,7 +20,6 @@ class PlotsDataManager {
 
         // pagination
         let plotsPage = plots.slice(offset, offset + limit);
-        console.log(plotsPage);
         return {
             data: plotsPage, 
             nextOffset: offset + limit,

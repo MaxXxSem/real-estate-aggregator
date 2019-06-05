@@ -8,6 +8,12 @@ class ItemsList extends React.Component {
 
         this.type = this.props.type;
     }
+
+    shouldComponentUpdate(props, state) {
+        if (props.shouldUpdate == true)
+            return true;
+        return false;
+    }
     
     render() {
         const { items } = this.props;

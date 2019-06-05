@@ -27,16 +27,25 @@ class ApartmentsFiltersContainer extends React.Component {
         this.noWorkWithRieltors = React.createRef();
 
         this.apartmentTypes = CommonDataManager.getApartmentTypes();
+        this.apartmentFilter = new ApartmentsFilter();
 
-        this.btnSearchClickHandler = this.btnSearchClickHandler.bind(this);
+        this.search = this.search.bind(this);
+        this.getFiltersData = this.getFiltersData.bind(this);
     }
 
     componentDidMount() {
         let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, new ApartmentsFilter(), this.props.limit, this.props.offset);
         this.props.onFiltersChange(apartmentsList);
     }
+
+    UNSAFE_componentWillReceiveProps(props) {
+        if (props.limit != this.props.limit || props.offset != this.props.offset) {
+            let apartmentsList = ApartmentsDataManager.getApartments(props.city, this.apartmentFilter, props.limit, props.offset);
+            props.onFiltersChange(apartmentsList);
+        }
+    }
     
-    btnSearchClickHandler(e) {
+    getFiltersData() {
         let apartmentFilter = new ApartmentsFilter();
         apartmentFilter.priceFrom = this.priceFrom.current.value;
         apartmentFilter.priceTo = this.priceTo.current.value;
@@ -53,8 +62,13 @@ class ApartmentsFiltersContainer extends React.Component {
         apartmentFilter.buildingType = this.buildingType.current.value;
         apartmentFilter.noWorkWithRieltors = this.noWorkWithRieltors.current.checked;
 
-        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, apartmentFilter, this.props.limit, this.props.offset);
-        this.props.onFiltersChange(apartmentsList);
+        return apartmentFilter;
+    }
+
+    search(e) {
+        this.apartmentFilter = this.getFiltersData();
+        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, this.apartmentFilter, this.props.limit, this.props.offset);
+        this.props.onFiltersChange(apartmentsList, true);
     }
 
     render() {
@@ -78,7 +92,7 @@ class ApartmentsFiltersContainer extends React.Component {
                     <Label text="Не работаю с посредниками" />
                     <Checkbox ref={this.noWorkWithRieltors} />
                 </div>
-                <button className="btn btn-primary" onClick={this.btnSearchClickHandler}>Найти</button>
+                <button className="btn btn-primary" onClick={this.search}>Найти</button>
             </div>
         );
     }

@@ -19,16 +19,25 @@ class PlotsFiltersContainer extends React.Component {
         this.noWorkWithRieltors = React.createRef();
 
         this.plotTypes = CommonDataManager.getPlotTypes();
+        this.plotFilter = new PlotsFilter();
 
-        this.btnSearchClickHandler = this.btnSearchClickHandler.bind(this);
+        this.search = this.search.bind(this);
+        this.getFiltersData = this.getFiltersData.bind(this);
     }
 
     componentDidMount() {
         let plotsList = PlotsDataManager.getPlots(this.props.city, new PlotsFilter(), this.props.limit, this.props.offset);
         this.props.onFiltersChange(plotsList);
     }
-    
-    btnSearchClickHandler(e) {
+
+    UNSAFE_componentWillReceiveProps(props) {
+        if (props.limit != this.props.limit || props.offset != this.props.offset) {
+            let plotsList = PlotsDataManager.getPlots(props.city, this.plotFilter, props.limit, props.offset);
+            props.onFiltersChange(plotsList);
+        }
+    }
+
+    getFiltersData() {
         let plotsFilter = new PlotsFilter();
         plotsFilter.priceFrom = this.priceFrom.current.value;
         plotsFilter.priceTo = this.priceTo.current.value;
@@ -37,8 +46,13 @@ class PlotsFiltersContainer extends React.Component {
         plotsFilter.plotType = this.plotType.current.value;
         plotsFilter.noWorkWithRieltors = this.noWorkWithRieltors.current.checked;
 
-        let housesList = PlotsDataManager.getPlots(this.props.city, plotsFilter, this.props.limit, this.props.offset);
-        this.props.onFiltersChange(housesList);
+        return plotsFilter;
+    }
+    
+    search() {
+        this.plotFilter = this.getFiltersData();
+        let plotsList = PlotsDataManager.getPlots(this.props.city, this.plotFilter, this.props.limit, this.props.offset);
+        this.props.onFiltersChange(plotsList, true);
     }
 
     render() {
@@ -58,7 +72,7 @@ class PlotsFiltersContainer extends React.Component {
                     <Label text="Не работаю с посредниками" />
                     <Checkbox ref={this.noWorkWithRieltors} />
                 </div>
-                <button className="btn btn-primary" onClick={this.btnSearchClickHandler}>Найти</button>
+                <button className="btn btn-primary" onClick={this.search}>Найти</button>
             </div>
         );
     }

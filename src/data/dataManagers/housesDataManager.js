@@ -26,7 +26,6 @@ class HousesDataManager {
 
         // pagination
         let housesPage = houses.slice(offset, offset + limit);
-        console.log(housesPage);
         return {
             data: housesPage, 
             nextOffset: offset + limit,
@@ -36,7 +35,6 @@ class HousesDataManager {
 
     static getHouse(id) {
         let house = data.data.houses.filter(x => x.Id == id)[0];
-        console.log(house);
 
         if (house)
             return house;
