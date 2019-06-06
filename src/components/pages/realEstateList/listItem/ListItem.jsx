@@ -13,11 +13,11 @@ class ListItem extends React.Component {
         return (
             <div className="container">
                 <div className="list-item-image">
-                    <img src={this.props.mainImage} />
+                    <a href={this.props.href}><img src={this.props.mainImage} /></a>
                 </div>           
 
                 <div className="list-item-address">
-                    <a>{this.props.address || "-"}</a>
+                    <a href={this.props.href}>{this.props.address || "-"}</a>
                 </div>     
 
                 <div className="list-item-price">
