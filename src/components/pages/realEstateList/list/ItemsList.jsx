@@ -26,7 +26,7 @@ class ItemsList extends React.Component {
                     items.map(x => (
                         <ListItem
                             key={x.Id}
-                            href={`/details/${x.Id}`}
+                            href={`/details/${this.type}/${x.Id}`}
                             type={this.type}
                             mainImage={x.Info.Photos[0]}
                             address={x.Info.Address}
