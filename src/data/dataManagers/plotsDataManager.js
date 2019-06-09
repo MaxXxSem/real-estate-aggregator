@@ -1,7 +1,7 @@
 import data from "../datasets/plots.json";
 
 class PlotsDataManager {
-    static getPlots(city, filter, limit = 10, offset = 0) {
+    static getPlots(city, filter, sorting, limit = 10, offset = 0) {
         // filters
         let plots = data.data.plots.filter(x => x.City === city);
 
@@ -16,6 +16,25 @@ class PlotsDataManager {
                     && (filter.noWorkWithRieltors && filter.noWorkWithRieltors == true ? (x.Info.OfferFrom == null || x.Info.OfferFrom !== "посредник") : true)
                 )
             );
+        }
+
+        if (sorting) {
+            let isAsc = sorting.order === "asc";
+            if (sorting.key === "price") {
+                plots.sort((a, b) => {
+                    return a.Info.Price - b.Info.Price;
+                });
+
+                if (!isAsc)
+                    plots = plots.reverse();
+            } else if (sorting.key === "date") {
+                plots.sort((a, b) => {
+                    return new Date(a.Info.CreationDate).getTime() - new Date(b.Info.CreationDate).getTime();
+                });
+
+                if (!isAsc)
+                    plots = plots.reverse();
+            }
         }
 
         // pagination

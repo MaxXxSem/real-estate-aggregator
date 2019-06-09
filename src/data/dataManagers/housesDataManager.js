@@ -1,7 +1,7 @@
 import data from "../datasets/houses.json";
 
 class HousesDataManager {
-    static getHouses(city, filter, limit = 10, offset = 0) {
+    static getHouses(city, filter, sorting, limit = 10, offset = 0) {
         // filters
         let houses = data.data.houses.filter(x => x.City === city);
 
@@ -22,6 +22,25 @@ class HousesDataManager {
                     && (filter.noWorkWithRieltors && filter.noWorkWithRieltors == true ? (x.Info.OfferFrom == null || x.Info.OfferFrom !== "посредник") : true)
                 )
             );
+        }
+
+        if (sorting) {
+            let isAsc = sorting.order === "asc";
+            if (sorting.key === "price") {
+                houses.sort((a, b) => {
+                    return a.Info.Price - b.Info.Price;
+                });
+
+                if (!isAsc)
+                    houses = houses.reverse();
+            } else if (sorting.key === "date") {
+                houses.sort((a, b) => {
+                    return new Date(a.Info.CreationDate).getTime() - new Date(b.Info.CreationDate).getTime();
+                });
+
+                if (!isAsc)
+                    houses = houses.reverse();
+            }
         }
 
         // pagination

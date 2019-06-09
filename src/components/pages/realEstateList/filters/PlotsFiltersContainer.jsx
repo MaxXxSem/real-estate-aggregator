@@ -26,13 +26,13 @@ class PlotsFiltersContainer extends React.Component {
     }
 
     componentDidMount() {
-        let plotsList = PlotsDataManager.getPlots(this.props.city, new PlotsFilter(), this.props.limit, this.props.offset);
+        let plotsList = PlotsDataManager.getPlots(this.props.city, new PlotsFilter(), { key: this.props.sortingKey, order: this.props.sortingOrder }, this.props.limit, this.props.offset);
         this.props.onFiltersChange(plotsList);
     }
 
     UNSAFE_componentWillReceiveProps(props) {
-        if (props.limit != this.props.limit || props.offset != this.props.offset) {
-            let plotsList = PlotsDataManager.getPlots(props.city, this.plotFilter, props.limit, props.offset);
+        if (props.limit != this.props.limit || props.offset != this.props.offset || props.sortingKey != this.props.sortingKey || props.sortingOrder != this.props.sortingOrder) {
+            let plotsList = PlotsDataManager.getPlots(props.city, this.plotFilter, { key: props.sortingKey, order: props.sortingOrder }, props.limit, props.offset);
             props.onFiltersChange(plotsList);
         }
     }
@@ -51,15 +51,30 @@ class PlotsFiltersContainer extends React.Component {
     
     search() {
         this.plotFilter = this.getFiltersData();
-        let plotsList = PlotsDataManager.getPlots(this.props.city, this.plotFilter, this.props.limit, this.props.offset);
+        let plotsList = PlotsDataManager.getPlots(this.props.city, this.plotFilter, { key: this.props.sortingKey, order: this.props.sortingOrder }, this.props.limit, this.props.offset);
         this.props.onFiltersChange(plotsList, true);
     }
 
     render() {
         return (
             <div className="filters">
-                <RangedFilter ref={{ refFrom: this.priceFrom, refTo: this.priceTo }} text="Цена" />
-                <RangedFilter ref={{ refFrom: this.plotAreaFrom, refTo: this.plotAreaTo }} text="Площадь участка" />
+                <RangedFilter 
+                    ref={{ refFrom: this.priceFrom, refTo: this.priceTo }} 
+                    text="Цена" 
+                    additionalOptions={[
+                        { text: "До 70 тыс.", to: 70000 },
+                        { text: "До 100 тыс.", to: 100000 }
+                    ]}
+                />
+                <RangedFilter 
+                    ref={{ refFrom: this.plotAreaFrom, refTo: this.plotAreaTo }} 
+                    text="Площадь участка" 
+                    additionalOptions={[
+                        { text: "От 70 кв.м.", from: 70 },
+                        { text: "От 100 кв.м.", from: 100 },
+                        { text: "От 200 кв.м.", from: 200 }
+                    ]}
+                />
                 <div>
                     <Label text="Тип" />
                     <Dropdown 

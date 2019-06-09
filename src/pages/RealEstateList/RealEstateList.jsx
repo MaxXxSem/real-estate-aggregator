@@ -7,6 +7,7 @@ import PlotsFiltersContainer from '../../components/pages/realEstateList/filters
 import ObjectType from '../../util/ObjectType';
 import ItemsList from '../../components/pages/realEstateList/list/ItemsList';
 import Pagination from '../../components/common/pagination/Pagination';
+import Dropdown from '../../components/common/dropdown/Dropdown';
 
 // filters and list of items
 class RealEstateList extends React.Component {
@@ -19,7 +20,9 @@ class RealEstateList extends React.Component {
         this.state = { 
             items: null,
             limit: 2,
-            offset: 0
+            offset: 0,
+            sortingKey: "date",
+            sortingOrder: "desc"
         };
 
         this.updateItems = false;
@@ -28,6 +31,8 @@ class RealEstateList extends React.Component {
         this.onPageChange = this.onPageChange.bind(this);
         this.onNextPage = this.onNextPage.bind(this);
         this.onPrevPage = this.onPrevPage.bind(this);
+        this.onSorting = this.onSorting.bind(this);
+        this.onPageSizeChange = this.onPageSizeChange.bind(this);
     }
 
     onFiltersChange(newItems, updatePage = false) {
@@ -69,6 +74,37 @@ class RealEstateList extends React.Component {
             offset: oldOffset - oldLimit
         });
     }
+
+    onPageSizeChange(e) {
+        let value = e.target.value;
+        this.setState({
+            limit: value
+        });
+    }
+
+    onSorting(e) {
+        let sorting = e.target.value;
+        let sortKey = "";
+        let sortOrder = "";
+        if (sorting === "priceAsc") {
+            sortKey = "price";
+            sortOrder = "asc";
+        } else if (sorting === "priceDesc") {
+            sortKey = "price";
+            sortOrder = "desc";
+        } else if (sorting === "dateAsc") {
+            sortKey = "date";
+            sortOrder = "asc";
+        } else if (sorting === "dateDesc") {
+            sortKey = "date";
+            sortOrder = "desc";
+        }
+
+        this.setState({
+            sortingKey: sortKey,
+            sortingOrder: sortOrder
+        });
+    }
     
     render() {
         const shouldUpdateItems = this.updateItems;
@@ -84,10 +120,22 @@ class RealEstateList extends React.Component {
 
                 {/* filters */}
                 {
-                    (this.type === ObjectType.Apartments && <ApartmentsFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} />)
-                    || (this.type === ObjectType.Houses && <HousesFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} />)
-                    || (this.type === ObjectType.Plots && <PlotsFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} />)
+                    (this.type === ObjectType.Apartments && <ApartmentsFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} sortingKey={this.state.sortingKey} sortingOrder={this.state.sortingOrder} />)
+                    || (this.type === ObjectType.Houses && <HousesFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} sortingKey={this.state.sortingKey} sortingOrder={this.state.sortingOrder} />)
+                    || (this.type === ObjectType.Plots && <PlotsFiltersContainer onFiltersChange={this.onFiltersChange} city={this.city} limit={this.state.limit} offset={this.state.offset} sortingKey={this.state.sortingKey} sortingOrder={this.state.sortingOrder} />)
                 }
+
+                {/* sorting */}
+                <Dropdown 
+                    classes="form-control" 
+                    options={[
+                        { text: "Сначала новые", value: "dateDesc" },
+                        { text: "Сначала старые", value: "dateAsc" },
+                        { text: "От дорогих к дешевым", value: "priceDesc" },
+                        { text: "От дешевых к дорогим", value: "priceAsc" }
+                    ]}
+                    onChangeHandler={this.onSorting}
+                />
 
                 {/* list of items */}
                 {
@@ -106,6 +154,18 @@ class RealEstateList extends React.Component {
                     onPageChange={this.onPageChange}
                     onNextPage={this.onNextPage}
                     onPrevPage={this.onPrevPage}
+                />
+
+                {/* change page size */}
+                <Dropdown 
+                    classes="form-control" 
+                    options={[
+                        { text: "2", value: "2" },
+                        { text: "5", value: "5" },
+                        { text: "10", value: "10" },
+                        { text: "15", value: "15" }
+                    ]}
+                    onChangeHandler={this.onPageSizeChange}
                 />
             </div>
         )

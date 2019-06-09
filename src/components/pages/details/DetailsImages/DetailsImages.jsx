@@ -1,25 +1,22 @@
 import React from 'react';
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
 
 class DetailsImages extends React.Component { 
     constructor(props) {
         super(props);
-    }
 
+        this.images = this.props.images.map(x => {
+            return { original: x, thumbnail: x };
+        });
+    }
+    
     render() {
-        const { images } = this.props;
-        console.log(images);
+        console.log(this.images);
 
         return (
             <div className="images">
-                {
-                    images.map(x => (
-                        <div key={x + Math.random().toString()} className="details-image">
-                            {
-                                <img src={x} />
-                            }
-                        </div>
-                    ))
-                }
+                <ImageGallery items={this.images} />
             </div>
         )
     }

@@ -34,13 +34,13 @@ class ApartmentsFiltersContainer extends React.Component {
     }
 
     componentDidMount() {
-        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, new ApartmentsFilter(), this.props.limit, this.props.offset);
+        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, new ApartmentsFilter(), { key: this.props.sortingKey, order: this.props.sortingOrder }, this.props.limit, this.props.offset);
         this.props.onFiltersChange(apartmentsList);
     }
 
     UNSAFE_componentWillReceiveProps(props) {
-        if (props.limit != this.props.limit || props.offset != this.props.offset) {
-            let apartmentsList = ApartmentsDataManager.getApartments(props.city, this.apartmentFilter, props.limit, props.offset);
+        if (props.limit != this.props.limit || props.offset != this.props.offset || props.sortingKey != this.props.sortingKey || props.sortingOrder != this.props.sortingOrder) {
+            let apartmentsList = ApartmentsDataManager.getApartments(props.city, this.apartmentFilter, { key: props.sortingKey, order: props.sortingOrder }, props.limit, props.offset);
             props.onFiltersChange(apartmentsList);
         }
     }
@@ -67,19 +67,65 @@ class ApartmentsFiltersContainer extends React.Component {
 
     search(e) {
         this.apartmentFilter = this.getFiltersData();
-        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, this.apartmentFilter, this.props.limit, this.props.offset);
+        let apartmentsList = ApartmentsDataManager.getApartments(this.props.city, this.apartmentFilter, { key: this.props.sortingKey, order: this.props.sortingOrder }, this.props.limit, this.props.offset);
         this.props.onFiltersChange(apartmentsList, true);
     }
 
     render() {
         return (
             <div className="filters">
-                <RangedFilter ref={{ refFrom: this.floorFrom, refTo: this.floorTo }} text="Этаж" />
-                <RangedFilter ref={{ refFrom: this.priceFrom, refTo: this.priceTo }} text="Цена" />
-                <RangedFilter ref={{ refFrom: this.roomsCountFrom, refTo: this.roomsCountTo }} text="Кол-во комнат" />
-                <RangedFilter ref={{ refFrom: this.fullAreaFrom, refTo: this.fullAreaTo }} text="Общая площадь" />
-                <RangedFilter ref={{ refFrom: this.livingAreaFrom, refTo: this.livingAreaTo }} text="Жилая площадь" />
-                <RangedFilter ref={{ refFrom: this.numberOfFloorsFrom, refTo: this.numberOfFloorsTo }} text="Этажность" />
+                <RangedFilter 
+                    ref={{ refFrom: this.floorFrom, refTo: this.floorTo }} 
+                    text="Этаж"
+                    additionalOptions={[
+                        { text: "Не первый", from: 2 },
+                        { text: "От 5", from: 5 },
+                        { text: "От 10", from: 10 }
+                    ]} 
+                />
+                <RangedFilter 
+                    ref={{ refFrom: this.priceFrom, refTo: this.priceTo }} 
+                    text="Цена" 
+                    additionalOptions={[
+                        { text: "До 200 тыс.", to: 200000 },
+                        { text: "До 500 тыс.", to: 500000 }
+                    ]}
+                />
+                <RangedFilter 
+                    ref={{ refFrom: this.roomsCountFrom, refTo: this.roomsCountTo }} 
+                    text="Кол-во комнат" 
+                    additionalOptions={[
+                        { text: "1 комната", from: 1, to: 1 },
+                        { text: "2 комнаты", from: 2, to: 2 },
+                        { text: "Больше 2-х", from: 3 }
+                    ]}    
+                />
+                <RangedFilter 
+                    ref={{ refFrom: this.fullAreaFrom, refTo: this.fullAreaTo }} 
+                    text="Общая площадь" 
+                    additionalOptions={[
+                        { text: "От 30 кв.м.", from: 30 },
+                        { text: "От 40 кв.м.", from: 40 },
+                        { text: "От 50 кв.м.", from: 50 }
+                    ]}
+                />
+                <RangedFilter 
+                    ref={{ refFrom: this.livingAreaFrom, refTo: this.livingAreaTo }} 
+                    text="Жилая площадь" 
+                    additionalOptions={[
+                        { text: "От 10 кв.м.", from: 10 },
+                        { text: "От 20 кв.м.", from: 20 },
+                        { text: "От 30 кв.м.", from: 30 }
+                    ]}
+                />
+                <RangedFilter 
+                    ref={{ refFrom: this.numberOfFloorsFrom, refTo: this.numberOfFloorsTo }} 
+                    text="Этажность" 
+                    additionalOptions={[
+                        { text: "До 5", to: 5 },
+                        { text: "До 10", to: 10 }
+                    ]}
+                />
                 <div>
                     <Label text="Тип" />
                     <Dropdown 

@@ -1,7 +1,7 @@
 import data from "../datasets/apartments.json";
 
 class ApartmentsDataManager {
-    static getApartments(city, filter, limit = 10, offset = 0) {
+    static getApartments(city, filter, sorting, limit = 10, offset = 0) {
         // filters
         let apartments = data.data.apartments.filter(x => x.City === city);
 
@@ -24,6 +24,25 @@ class ApartmentsDataManager {
                     && (filter.noWorkWithRieltors && filter.noWorkWithRieltors == true ? (x.Info.OfferFrom == null || x.Info.OfferFrom !== "посредник") : true)
                 )
             );
+        }
+
+        if (sorting) {
+            let isAsc = sorting.order === "asc";
+            if (sorting.key === "price") {
+                apartments.sort((a, b) => {
+                    return a.Info.Price - b.Info.Price;
+                });
+
+                if (!isAsc)
+                    apartments = apartments.reverse();
+            } else if (sorting.key === "date") {
+                apartments.sort((a, b) => {
+                    return new Date(a.Info.CreationDate).getTime() - new Date(b.Info.CreationDate).getTime();
+                });
+
+                if (!isAsc)
+                    apartments = apartments.reverse();
+            }
         }
 
         // pagination
