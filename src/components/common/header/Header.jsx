@@ -22,24 +22,23 @@ class Header extends React.Component {
     }
     
     render() {
-        const { city, type } = this.props;
+        const { city, type, classes } = this.props;
 
         return (
-            <div>
+            <div className={`header ${classes}`}>
                 <div className="logo">
                     <img src="#" />
                 </div>
 
-                <div className="main-filters">
-                    <MainFilters 
-                        onTypeChange={this.onTypeChange}
-                        objectTypeOptions={this.objectTypeOptions}
-                        defaultType={type}
-                        onCityChange={this.onCityChange}
-                        cityOptions={this.cityOptions}
-                        defaultCity={city}
-                    />
-                </div>
+                <MainFilters 
+                    onTypeChange={this.onTypeChange}
+                    objectTypeOptions={this.objectTypeOptions}
+                    defaultType={type}
+                    onCityChange={this.onCityChange}
+                    cityOptions={this.cityOptions}
+                    defaultCity={city}
+                    classes="position-relative"
+                />
             </div>
         );
     }

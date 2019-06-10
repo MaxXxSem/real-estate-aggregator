@@ -1,0 +1,29 @@
+.header {
+    background-color: #2c71c5;
+    height: 60px;
+}
+
+.logo {
+    width: auto;
+    float: left;
+}
+
+.main-filters-wrapper {
+    height: 40px;
+    padding-top: 10px;
+}
+
+.main-filters
+.main-dropdown,
+.main-filters
+.main-dropdown:focus {
+    background-color: #798e94;
+    color: #fff;
+}
+
+.main-filters .form-group {
+    // float: left;
+    width: 250px;
+    display: inline-block;
+    margin-left: 3%;
+}

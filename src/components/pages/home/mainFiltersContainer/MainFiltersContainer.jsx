@@ -1,6 +1,7 @@
 import React from 'react';
 import MainFilters from '../../../common/mainFilters/MainFilters';
 import CommonDataManager from '../../../../data/dataManagers/commonDataManager';
+import './MainFiltersContainer.scss';
 
 class MainFiltersContainer extends React.Component { 
     constructor(props) {
@@ -41,9 +42,9 @@ class MainFiltersContainer extends React.Component {
         const { siteName, description, buttonName } = this.props;
 
         return (
-            <div className="container">
-                <div className="site-name">{siteName}</div>
-                <div className="site-description">{description}</div>
+            <div className="main-filters-container offset-md-3 col-md-6 v-align px-4 py-5">
+                <h1 className="site-name site-name col-md-6 px-0 font-weight-bold">{siteName}</h1>
+                <h4 className="site-description my-4 px-0">{description}</h4>
 
                 <div>
                     <MainFilters 
