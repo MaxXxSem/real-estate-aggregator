@@ -1,0 +1,29 @@
+.real-estate-item {
+    .list-item-info > div {
+        margin-bottom: 5px;
+
+        span:first-of-type {
+            margin-right: 10px;
+        }
+    }
+
+    .list-item-address a {
+        color: #000;
+        text-decoration: none;
+        font-size: 1.9em;
+    }
+
+    .list-item-price {
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+
+    .list-item-info-size {
+        font-size: 1.1em;
+    }
+
+    .list-item-date {
+        position: absolute;
+        bottom: 1.5rem;
+    }
+}

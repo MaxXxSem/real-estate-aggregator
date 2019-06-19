@@ -1,0 +1,57 @@
+.details-container {
+    .details-title {
+        font-size: 1.6em;
+    }
+
+    .images {
+        width: 65%;
+        float: left;
+    }
+
+    .details-right-block {
+        width: 35%;
+        float: right;
+        padding-left: 30px;
+
+        .details-price {
+            font-size: 1.6em;
+            text-align: center;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #efefef;
+        }
+
+        .details-contacts {
+            text-align: center;
+            padding-top: 20px;
+            border: 1px solid #efefef;
+
+            div {
+                margin-bottom: 10px;
+                font-size: 1.1em;
+            }
+        }
+    }
+
+    .details-bottom-block {
+        clear: both;
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #efefef;
+
+        .details-address {
+            font-size: 1.3em;
+            display: inline-block;
+        }
+
+        .details-date {
+            font-size: 1.3em;
+            display: inline-block;
+            float: right;
+        }
+
+        .details-features-item {
+            padding-top: 10px;
+        }
+    }
+}

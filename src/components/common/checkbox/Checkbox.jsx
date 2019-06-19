@@ -5,7 +5,7 @@ class Checkbox extends React.Component {
         const { forwardedRef, classes } = this.props;
 
         return (
-            <div className={`checkbox-container ${classes}`}>
+            <div className={`checkbox-container d-inline-block ${classes}`}>
                 <input ref={forwardedRef} type="checkbox" />
             </div>
         )

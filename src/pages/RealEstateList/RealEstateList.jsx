@@ -111,7 +111,7 @@ class RealEstateList extends React.Component {
         this.updateItems = false;
 
         return (
-            <div className="container">
+            <div className="container list-container">
                 {/* heared with main filters */}
                 <Header 
                     type={this.type}
@@ -127,7 +127,7 @@ class RealEstateList extends React.Component {
 
                 {/* sorting */}
                 <Dropdown 
-                    classes="form-control" 
+                    classes="form-control w-auto d-inline-block mb-3" 
                     options={[
                         { text: "Сначала новые", value: "dateDesc" },
                         { text: "Сначала старые", value: "dateAsc" },
@@ -143,6 +143,7 @@ class RealEstateList extends React.Component {
                     <ItemsList 
                         items={this.state.items.data}
                         type={this.type}
+                        city={this.city}
                         shouldUpdate={shouldUpdateItems}
                     />
                 }
@@ -158,7 +159,7 @@ class RealEstateList extends React.Component {
 
                 {/* change page size */}
                 <Dropdown 
-                    classes="form-control" 
+                    classes="form-control d-inline-block w-auto float-right" 
                     options={[
                         { text: "2", value: "2" },
                         { text: "5", value: "5" },

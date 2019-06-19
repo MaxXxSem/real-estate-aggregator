@@ -7,7 +7,7 @@ class Home extends React.Component {
     // TODO: add props types and defaults    
     render() {
         return (
-            <div className="container h-100 position-relative">
+            <div className="container h-100 position-relative home-container">
                 <MainFiltersContainer 
                     siteName="Real Estate Aggregator"
                     description="Лучший сервис по продаже недвижимости"

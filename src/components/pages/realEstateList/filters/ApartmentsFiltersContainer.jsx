@@ -73,7 +73,7 @@ class ApartmentsFiltersContainer extends React.Component {
 
     render() {
         return (
-            <div className="filters">
+            <div className="filters mt-2 mb-4">
                 <RangedFilter 
                     ref={{ refFrom: this.floorFrom, refTo: this.floorTo }} 
                     text="Этаж"
@@ -126,19 +126,19 @@ class ApartmentsFiltersContainer extends React.Component {
                         { text: "До 10", to: 10 }
                     ]}
                 />
-                <div>
+                <div className="d-block">
                     <Label text="Тип" />
                     <Dropdown 
-                        classes="form-control" 
+                        classes="form-control w-auto" 
                         options={this.apartmentTypes}
                         ref={this.buildingType} 
                     />
                 </div>
-                <div>
+                <div className="d-inline-block">
+                    <Checkbox ref={this.noWorkWithRieltors} classes="pr-2" />
                     <Label text="Не работаю с посредниками" />
-                    <Checkbox ref={this.noWorkWithRieltors} />
                 </div>
-                <button className="btn btn-primary" onClick={this.search}>Найти</button>
+                <button className="btn btn-primary d-block" onClick={this.search}>Найти</button>
             </div>
         );
     }

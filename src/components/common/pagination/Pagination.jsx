@@ -3,7 +3,7 @@ import React from 'react';
 class Pagination extends React.Component {    
     render() {
         return (
-            <nav aria-label="...">
+            <nav aria-label="..." className="d-inline-block">
                 <ul className="pagination">
                     <li className={`page-item ${this.props.page == 1 ? 'disabled' : ""}`}>
                         <a onClick={this.props.onPrevPage} className="page-link" href="#" tabIndex="-1">Previous</a>

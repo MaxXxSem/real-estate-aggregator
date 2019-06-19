@@ -16,3 +16,10 @@ body {
     top: 50%;
     transform: translate(0, -50%);
 }
+
+.item-container {
+    box-shadow: 0 22px 31px 0 rgba(0, 0, 0, 0.04);
+    border: 1px solid #E5E5E5;
+    background-color: #fff;
+    margin-bottom: 20px;
+}

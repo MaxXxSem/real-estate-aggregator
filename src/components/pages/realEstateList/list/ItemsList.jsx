@@ -7,6 +7,7 @@ class ItemsList extends React.Component {
         super(props);
 
         this.type = this.props.type;
+        this.city = this.props.city;
     }
 
     shouldComponentUpdate(props, state) {
@@ -20,14 +21,15 @@ class ItemsList extends React.Component {
         console.log(items);
 
         return (
-            <div className="container">
+            <div className="list-container">
                 {
                     (items.length > 0) && 
                     items.map(x => (
                         <ListItem
                             key={x.Id}
-                            href={`/details/${this.type}/${x.Id}`}
+                            href={`/details/${this.type}/${this.city}/${x.Id}`}
                             type={this.type}
+                            city={this.city}
                             mainImage={x.Info.Photos[0]}
                             address={x.Info.Address}
                             price={x.Info.Price}

@@ -5,7 +5,7 @@ class MainFilters extends React.Component {
     render() {
         return (
             <div className={`main-filters ${this.props.classes}`}>
-                <div class="main-filters-wrapper">
+                <div className="main-filters-wrapper">
                     <div className="form-group">
                         <Dropdown 
                             classes="main-dropdown form-control" 

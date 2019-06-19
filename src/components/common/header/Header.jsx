@@ -1,6 +1,8 @@
 import React from 'react';
 import MainFilters from '../mainFilters/MainFilters';
 import CommonDataManager from '../../../data/dataManagers/commonDataManager';
+import logo from '../../../public/img/logo.png';
+import './Header.scss';
 
 class Header extends React.Component { 
     constructor(props) {
@@ -27,7 +29,7 @@ class Header extends React.Component {
         return (
             <div className={`header ${classes}`}>
                 <div className="logo">
-                    <img src="#" />
+                    <img src={logo} />
                 </div>
 
                 <MainFilters 
