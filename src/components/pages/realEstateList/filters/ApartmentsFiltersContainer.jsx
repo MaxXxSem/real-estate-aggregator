@@ -82,14 +82,16 @@ class ApartmentsFiltersContainer extends React.Component {
                         { text: "От 5", from: 5 },
                         { text: "От 10", from: 10 }
                     ]} 
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.priceFrom, refTo: this.priceTo }} 
                     text="Цена" 
                     additionalOptions={[
-                        { text: "До 200 тыс.", to: 200000 },
-                        { text: "До 500 тыс.", to: 500000 }
+                        { text: "До 200 000 $", to: 200000 },
+                        { text: "До 500 000 $", to: 500000 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.roomsCountFrom, refTo: this.roomsCountTo }} 
@@ -99,6 +101,7 @@ class ApartmentsFiltersContainer extends React.Component {
                         { text: "2 комнаты", from: 2, to: 2 },
                         { text: "Больше 2-х", from: 3 }
                     ]}    
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.fullAreaFrom, refTo: this.fullAreaTo }} 
@@ -108,6 +111,7 @@ class ApartmentsFiltersContainer extends React.Component {
                         { text: "От 40 кв.м.", from: 40 },
                         { text: "От 50 кв.м.", from: 50 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.livingAreaFrom, refTo: this.livingAreaTo }} 
@@ -117,6 +121,7 @@ class ApartmentsFiltersContainer extends React.Component {
                         { text: "От 20 кв.м.", from: 20 },
                         { text: "От 30 кв.м.", from: 30 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.numberOfFloorsFrom, refTo: this.numberOfFloorsTo }} 
@@ -125,16 +130,18 @@ class ApartmentsFiltersContainer extends React.Component {
                         { text: "До 5", to: 5 },
                         { text: "До 10", to: 10 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
-                <div className="d-block">
-                    <Label text="Тип" />
+                <div className="d-inline-block">
                     <Dropdown 
                         classes="form-control w-auto" 
                         options={this.apartmentTypes}
                         ref={this.buildingType} 
+                        placeholder="Тип"
+                        onChangeClass="filterChangeStyle"
                     />
                 </div>
-                <div className="d-inline-block">
+                <div className="d-block">
                     <Checkbox ref={this.noWorkWithRieltors} classes="pr-2" />
                     <Label text="Не работаю с посредниками" />
                 </div>

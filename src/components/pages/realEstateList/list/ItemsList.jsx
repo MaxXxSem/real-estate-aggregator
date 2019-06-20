@@ -23,7 +23,7 @@ class ItemsList extends React.Component {
         return (
             <div className="list-container">
                 {
-                    (items.length > 0) && 
+                    ((items.length > 0) && 
                     items.map(x => (
                         <ListItem
                             key={x.Id}
@@ -39,7 +39,8 @@ class ItemsList extends React.Component {
                             title={x.Info.Title}
                             date={x.Info.CreationDate}
                         />
-                    ))
+                    )))
+                    || (<div className="empty-placeholder my-4">Empty...</div>)
                 }
             </div>
         )

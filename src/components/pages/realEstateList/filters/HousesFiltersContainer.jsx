@@ -74,9 +74,10 @@ class HousesFiltersContainer extends React.Component {
                     ref={{ refFrom: this.priceFrom, refTo: this.priceTo }} 
                     text="Цена" 
                     additionalOptions={[
-                        { text: "До 200 тыс.", to: 200000 },
-                        { text: "До 500 тыс.", to: 500000 }
+                        { text: "До 200 000 $", to: 200000 },
+                        { text: "До 500 000 $", to: 500000 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.roomsCountFrom, refTo: this.roomsCountTo }} 
@@ -86,6 +87,7 @@ class HousesFiltersContainer extends React.Component {
                         { text: "3 комнаты", from: 3, to: 3 },
                         { text: "Больше 3-х", from: 4 }
                     ]} 
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.houseAreaFrom, refTo: this.houseAreaTo }} 
@@ -95,6 +97,7 @@ class HousesFiltersContainer extends React.Component {
                         { text: "От 60 кв.м.", from: 60 },
                         { text: "От 70 кв.м.", from: 70 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.plotAreaFrom, refTo: this.plotAreaTo }} 
@@ -104,6 +107,7 @@ class HousesFiltersContainer extends React.Component {
                         { text: "От 80 кв.м.", from: 80 },
                         { text: "От 90 кв.м.", from: 90 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.numberOfFloorsFrom, refTo: this.numberOfFloorsTo }} 
@@ -113,16 +117,18 @@ class HousesFiltersContainer extends React.Component {
                         { text: "2 этажа", from: 2, to: 2 },
                         { text: "Больше двух", from: 3 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
-                <div className="d-block">
-                    <Label text="Тип" />
+                <div className="d-inline-block">
                     <Dropdown 
                         classes="form-control w-auto" 
                         options={this.houseTypes}
                         ref={this.buildingType} 
+                        placeholder="Тип"
+                        onChangeClass="filterChangeStyle"
                     />
                 </div>
-                <div className="d-inline-block">
+                <div className="d-block">
                     <Checkbox ref={this.noWorkWithRieltors} classes="pr-2" />
                     <Label text="Не работаю с посредниками" />
                 </div>

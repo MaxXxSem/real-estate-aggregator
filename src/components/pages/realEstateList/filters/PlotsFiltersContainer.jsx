@@ -62,9 +62,10 @@ class PlotsFiltersContainer extends React.Component {
                     ref={{ refFrom: this.priceFrom, refTo: this.priceTo }} 
                     text="Цена" 
                     additionalOptions={[
-                        { text: "До 70 тыс.", to: 70000 },
-                        { text: "До 100 тыс.", to: 100000 }
+                        { text: "До 70 000 $", to: 70000 },
+                        { text: "До 100 000 $", to: 100000 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
                 <RangedFilter 
                     ref={{ refFrom: this.plotAreaFrom, refTo: this.plotAreaTo }} 
@@ -74,16 +75,18 @@ class PlotsFiltersContainer extends React.Component {
                         { text: "От 100 кв.м.", from: 100 },
                         { text: "От 200 кв.м.", from: 200 }
                     ]}
+                    onChangeClass="filterChangeStyle"
                 />
-                <div className="d-block">
-                    <Label text="Тип" />
+                <div className="d-inline-block">
                     <Dropdown 
                         classes="form-control w-auto" 
                         options={this.plotTypes}
-                        ref={this.plotType} 
+                        ref={this.plotType}
+                        placeholder="Тип" 
+                        onChangeClass="filterChangeStyle"
                     />
                 </div>
-                <div className="d-inline-block">
+                <div className="d-block">
                     <Checkbox ref={this.noWorkWithRieltors} classes="pr-2" />
                     <Label text="Не работаю с посредниками" />
                 </div>

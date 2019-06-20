@@ -14,4 +14,12 @@
     .filters > div {
         margin: 10px 3% 10px 0;
     }
+
+    .filters > div.d-inline-block {
+        margin-right: 0;
+    }
+
+    .empty-placeholder {
+        font-size: 1.5em;
+    }
 }
