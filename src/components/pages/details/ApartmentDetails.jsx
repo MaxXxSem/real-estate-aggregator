@@ -30,33 +30,38 @@ class ApartmentDetails extends React.Component {
 
         return (
             (apartment &&
-            <div className="container">
-                {/* Заглавие */}
-                <div className="details-title py-4">
-                    <span>{apartment.Info.Title}</span>
+            <div>
+                <div className="item-container">
+                    {/* Заглавие */}
+                    <div className="details-title px-3 py-4">
+                        <span>{apartment.Info.Title}</span>
+                    </div>
+                    
+                    <div className="row mx-0 pb-3">
+                        {/* Фото */}
+                        <DetailsImages 
+                            images={apartment.Info.Photos} 
+                            classes="col-md-8"
+                        />
+
+                        <div className="details-right-block col-md-4">
+                            {/* Цена */}
+                            <div className="details-price">
+                                <span>{`${apartment.Info.Price} $`}</span>
+                            </div>
+
+                            {/* Контакты */}
+                            <div className="details-contacts">
+                                <h3>Контакты</h3>
+                                <div className="contacts-name">{apartment.Contacts.Name}</div>
+                                <div className="contacts-phone">{apartment.Contacts.Phone}</div>
+                                <div className="contacts-status">{apartment.Contacts.Status}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                {/* Фото */}
-                <DetailsImages 
-                    images={apartment.Info.Photos} 
-                />
-
-                <div className="details-right-block">
-                    {/* Цена */}
-                    <div className="details-price">
-                        <span>{`${apartment.Info.Price} $`}</span>
-                    </div>
-
-                    {/* Контакты */}
-                    <div className="details-contacts">
-                        <h3>Контакты</h3>
-                        <div className="contacts-name">{apartment.Contacts.Name}</div>
-                        <div className="contacts-phone">{apartment.Contacts.Phone}</div>
-                        <div className="contacts-status">{apartment.Contacts.Status}</div>
-                    </div>
-                </div>
-                
-                <div className="details-bottom-block">
+                <div className="details-bottom-block item-container">
                     {/* Адрес */}
                     <div className="details-address">
                         <span>{apartment.Info.Address}</span>
@@ -74,7 +79,7 @@ class ApartmentDetails extends React.Component {
                     </div>
                     
                     {/* Детали */}
-                    <div className="details-features">
+                    <div className="details-features pb-1 mb-4">
                         {/* 
                             RoomsCount
                             FullArea
@@ -107,6 +112,7 @@ class ApartmentDetails extends React.Component {
                     
                     {/* Подробное описание */}
                     <div className="details-description">
+                        <Label text="Описание" classes="h3 d-block" />
                         {apartment.Info.Description}
                     </div>
                 </div>

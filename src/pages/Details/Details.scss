@@ -3,18 +3,10 @@
         font-size: 1.6em;
     }
 
-    .images {
-        width: 65%;
-        float: left;
-    }
-
     .details-right-block {
-        width: 35%;
-        float: right;
-        padding-left: 30px;
-
         .details-price {
             font-size: 1.6em;
+            font-weight: 600;
             text-align: center;
             padding-bottom: 10px;
             padding-top: 10px;
@@ -40,7 +32,7 @@
         border: 1px solid #efefef;
 
         .details-address {
-            font-size: 1.3em;
+            font-size: 1.5em;
             display: inline-block;
         }
 
@@ -48,6 +40,10 @@
             font-size: 1.3em;
             display: inline-block;
             float: right;
+        }
+
+        .details-features {
+            border-bottom: 1px solid #efefef;
         }
 
         .details-features-item {

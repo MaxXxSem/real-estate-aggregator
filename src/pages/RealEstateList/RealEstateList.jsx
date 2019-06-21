@@ -19,7 +19,7 @@ class RealEstateList extends React.Component {
 
         this.state = { 
             items: null,
-            limit: 2,
+            limit: 5,
             offset: 0,
             sortingKey: "date",
             sortingOrder: "desc"
@@ -155,13 +155,13 @@ class RealEstateList extends React.Component {
                     onPageChange={this.onPageChange}
                     onNextPage={this.onNextPage}
                     onPrevPage={this.onPrevPage}
+                    classes="list-pagination"
                 />
 
                 {/* change page size */}
                 <Dropdown 
                     classes="form-control d-inline-block w-auto float-right" 
                     options={[
-                        { text: "2", value: "2" },
                         { text: "5", value: "5" },
                         { text: "10", value: "10" },
                         { text: "15", value: "15" }

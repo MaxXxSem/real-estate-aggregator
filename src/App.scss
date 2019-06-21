@@ -1,14 +1,16 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/react-toastify/dist/ReactToastify.min.css';
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
 html {
     height: 100%;
 }
 
 body {
+    color: #3c4146;
     height: 100%;
     background-color: #f4f5f6;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Poppins, Helvetica, sans-serif;
 }
 
 .v-align {
@@ -25,5 +27,29 @@ body {
 }
 
 .filterChangeStyle {
-    border: 1px solid orange;
+    border-bottom: 3px solid orange;
+    border-radius: 6px;
+}
+
+.btn-orange,
+.btn-orange:hover,
+.btn-orange:active,
+.btn-orange:focus {
+    background-color: #ff721f;
+    color: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    outline: none;
+    box-shadow: none;
+}
+
+.no-shadow,
+.no-shadow:hover,
+.no-shadow:active,
+.no-shadow:focus {
+    box-shadow: none !important;
+    outline: none;
+}
+
+.grey-background {
+    background-color: #f4f5f6;
 }

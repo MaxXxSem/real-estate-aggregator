@@ -27,7 +27,7 @@ class Dropdown extends React.Component {
         const { placeholder } = this.props;
 
         return (
-            <select ref={forwardedRef} value={this.props.defaultVal} onChange={this.onChange} className={classes}>
+            <select ref={forwardedRef} value={this.props.defaultVal} onChange={this.onChange} className={`no-shadow ${classes}`}>
                 {
                     placeholder && (
                         <option value="" selected disabled hidden>{placeholder}</option>

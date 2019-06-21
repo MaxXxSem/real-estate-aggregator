@@ -73,7 +73,7 @@ class ApartmentsFiltersContainer extends React.Component {
 
     render() {
         return (
-            <div className="filters mt-2 mb-4">
+            <div className="filters mb-4 item-container pr-3 pb-3 pl-3 pt-2">
                 <RangedFilter 
                     ref={{ refFrom: this.floorFrom, refTo: this.floorTo }} 
                     text="Этаж"
@@ -132,7 +132,7 @@ class ApartmentsFiltersContainer extends React.Component {
                     ]}
                     onChangeClass="filterChangeStyle"
                 />
-                <div className="d-inline-block">
+                <div className="btn-group d-inline-block">
                     <Dropdown 
                         classes="form-control w-auto" 
                         options={this.apartmentTypes}
@@ -145,7 +145,7 @@ class ApartmentsFiltersContainer extends React.Component {
                     <Checkbox ref={this.noWorkWithRieltors} classes="pr-2" />
                     <Label text="Не работаю с посредниками" />
                 </div>
-                <button className="btn btn-primary d-block" onClick={this.search}>Найти</button>
+                <button className="btn btn-orange no-shadow d-block" onClick={this.search}>Найти</button>
             </div>
         );
     }

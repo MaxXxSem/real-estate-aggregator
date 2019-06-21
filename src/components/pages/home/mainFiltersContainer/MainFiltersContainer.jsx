@@ -42,7 +42,7 @@ class MainFiltersContainer extends React.Component {
         const { siteName, description, buttonName } = this.props;
 
         return (
-            <div className="main-filters-container offset-md-3 col-md-6 v-align px-4 py-5">
+            <div className="main-filters-container offset-md-2 col-md-8 v-align item-container">
                 <h1 className="site-name site-name col-md-6 px-0 font-weight-bold">{siteName}</h1>
                 <h4 className="site-description my-4 px-0">{description}</h4>
 
@@ -53,7 +53,7 @@ class MainFiltersContainer extends React.Component {
                         objectTypeOptions={this.objectTypeOptions}
                         cityOptions={this.cityOptions}
                     />
-                    <a href="#" className="find-button btn btn-primary" onClick={this.searchBtnClick}>{buttonName}</a>
+                    <a href="#" className="find-button btn btn-orange btn-lg w-100" onClick={this.searchBtnClick}>{buttonName}</a>
                 </div>
             </div>
         )

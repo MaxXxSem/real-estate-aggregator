@@ -28,7 +28,7 @@ class RangedFilter extends React.Component {
 
         return (
             <div className={`btn-group ranged-filter-container`} ref={this.container}>
-                <button type="button" className="btn dropdown-toggle ranged-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" className="btn dropdown-toggle ranged-filter no-shadow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {text}
                 </button>
                 <div className="dropdown-menu">
@@ -36,15 +36,15 @@ class RangedFilter extends React.Component {
                         {
                             additionalOptions &&
                             additionalOptions.map(x => (
-                                <button key={x.text} className="dropdown-item pl-2" onClick={(e) => {
+                                <button key={x.text} className="dropdown-item pl-2 no-shadow" onClick={(e) => {
                                     refFrom.current.value = (x.from ? x.from : "");
                                     refTo.current.value = (x.to ? x.to : "");
                                     this.onChangeHandler();
                                 }}>{x.text}</button>
                             ))
                         }
-                        <input onChange={this.onChangeHandler} ref={refFrom} className="dropdown-item filter-text-input col-md-6 pl-2 pr-1" type="number" min="1" placeholder="от" />
-                        <input onChange={this.onChangeHandler} ref={refTo} className="dropdown-item filter-text-input col-md-6 pr-2 pl-1" type="number" min="1" placeholder="до" />
+                        <input onChange={this.onChangeHandler} ref={refFrom} className="dropdown-item filter-text-input col-md-6 pl-2 pr-1 no-shadow" type="number" min="1" placeholder="от" />
+                        <input onChange={this.onChangeHandler} ref={refTo} className="dropdown-item filter-text-input col-md-6 pr-2 pl-1 no-shadow" type="number" min="1" placeholder="до" />
                     </div>
                 </div>
             </div>

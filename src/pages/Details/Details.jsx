@@ -23,7 +23,7 @@ class Details extends React.Component {
                     type={this.type}
                     city={this.city} 
                 />
-                <div className="item-container">
+                <div>
                 {
                     (this.type === "apartments" && <ApartmentDetails id={this.id} />)
                     || (this.type === "houses" && <HouseDetails id={this.id} />)

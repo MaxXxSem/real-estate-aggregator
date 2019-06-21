@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import "./DetailsImages.scss";
 
 class DetailsImages extends React.Component { 
     constructor(props) {
@@ -15,7 +16,7 @@ class DetailsImages extends React.Component {
         console.log(this.images);
 
         return (
-            <div className="images">
+            <div className={`images ${this.props.classes}`}>
                 <ImageGallery items={this.images} />
             </div>
         )
