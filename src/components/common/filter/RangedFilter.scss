@@ -11,3 +11,17 @@
 .ranged-filter:focus {
     border: none;
 }
+
+.ranged-filter.active::after {
+    vertical-align: 10px;
+}
+
+.small-title {
+    font-size: 11px;
+}
+
+.filter-value-text {
+    font-size: 14px;
+    text-align: left;
+    margin-top: -5px;
+}

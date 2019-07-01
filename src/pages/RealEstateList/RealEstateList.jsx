@@ -137,6 +137,8 @@ class RealEstateList extends React.Component {
                     onChangeHandler={this.onSorting}
                 />
 
+                <div>{`Найдено всего ${this.state.items ? this.state.items.totalCount : 0} элементов`}</div>
+
                 {/* list of items */}
                 {
                     this.state.items && 
