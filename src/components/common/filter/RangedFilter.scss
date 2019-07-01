@@ -1,0 +1,13 @@
+.filter-cleaner button {
+    border: none;
+    background-color: transparent;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -55%);
+}
+
+.ranged-filter,
+.ranged-filter:hover,
+.ranged-filter:focus {
+    border: none;
+}

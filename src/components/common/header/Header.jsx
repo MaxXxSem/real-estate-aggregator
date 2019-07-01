@@ -29,7 +29,7 @@ class Header extends React.Component {
         return (
             <div className={`header ${classes}`}>
                 <div className="logo">
-                    <img src={logo} />
+                    <a href="/home"><img src={logo} /></a>
                 </div>
 
                 <MainFilters 
