@@ -13,6 +13,7 @@
         background-color: #fff !important;
         border: none;
         color: #3c4146 !important;
+        height: 41px;
     }
 
     .filters > div {
@@ -21,6 +22,10 @@
 
     .filters > div.d-inline-block {
         margin-right: 0;
+
+        select {
+            height: 41px;
+        }
     }
 
     .empty-placeholder {
