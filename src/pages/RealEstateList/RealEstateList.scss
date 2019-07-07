@@ -44,3 +44,13 @@
         }
     }
 }
+
+@media screen and (min-width: 1366px) {
+    .real-estate-item {
+        min-height: 395px;
+    }
+
+    .image-gallery-slide-wrapper {
+        min-height: 506px;
+    }
+}

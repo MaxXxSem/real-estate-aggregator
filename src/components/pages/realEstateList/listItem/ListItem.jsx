@@ -16,13 +16,13 @@ class ListItem extends React.Component {
         return (
             <div className="real-estate-item item-container row mx-0">
                 <div className="list-item-image col-md-6 p-0">
-                    <a className="w-100" href={this.props.href}><img className="w-100" src={this.props.mainImage} /></a>
+                    <a className="w-100" href={this.props.href} target="_blank"><img className="w-100" src={this.props.mainImage} /></a>
                 </div>      
 
                 <div className="list-item-info col-md-6 p-4">
                     <div className="list-item-address">
-                        <a href={this.props.href}>{this.props.address || "-"}</a>
-                    </div>     
+                        <a href={this.props.href} target="_blank">{this.props.address || "-"}</a>
+                    </div>    
 
                     <div className="list-item-price">
                         <span>{`${this.props.price} $`}</span>
